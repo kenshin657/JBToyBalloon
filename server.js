@@ -4,6 +4,8 @@ const session = require("express-session");
 const cookieparser = require("cookie-parser");
 const mongoose = require("mongoose");
 
+const nodeMailer = require("nodemailer")
+
 const {User} = require("./model/user.js");
 const {Order} = require("./model/order.js");
 const {Warehouse} = require("./model/warehouse.js");
@@ -103,6 +105,37 @@ app.post("/updateDriver", urlencoder, function(req,res){
 app.post("/deleteDriver", urlencoder, function(req,res){
     
 })
+
+app.post("/contact", urlencoder, function(req, res) {
+    let transporter = nodeMailer.createTransport({
+        host: 'smtp.gmail.com',
+        port: 465,
+        auth: {
+            user: 'twitter.project.algo@gmail.com',
+            pass: 'iamalgo11617!'
+        }
+    })
+
+    const message = {
+        from: req.body.email,
+        to: 'kyletagle727@gmail.com',
+        subject: req.body.subject,
+        text: req.body.text
+    }
+
+    transporter.sendMail(message, (err,info)=>{
+        if(err)
+            console.log(err)
+        else
+            console.log(info)
+    })
+
+    res.render("contact.hbs")
+})
+
+
+
+
 
 
 app.listen(process.env.PORT|| 3001, function(){
