@@ -120,7 +120,7 @@ app.post("/contact", urlencoder, function(req, res) {
     let text = req.body.text + "\n\nSent From: " + req.body.email
     const message = {
         from: req.body.email,
-        to: 'kyletagle727@gmail.com',
+        to: 'cbroqueza100598@gmail.com',
         subject: req.body.subject,
         text: text
     }
