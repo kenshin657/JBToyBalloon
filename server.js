@@ -117,7 +117,7 @@ app.post("/contact", urlencoder, function(req, res) {
     })
 
 
-    let text = req.body.text + "\n\nSent From: " + req.body.email
+    let text ="From: "+ req.body.name + "\n" + req.body.text + "\n\nSent From: " + req.body.email
     const message = {
         from: req.body.email,
         to: 'cbroqueza100598@gmail.com',
