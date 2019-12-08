@@ -111,16 +111,18 @@ app.post("/contact", urlencoder, function(req, res) {
         host: 'smtp.gmail.com',
         port: 465,
         auth: {
-            user: 'twitter.project.algo@gmail.com',
-            pass: 'iamalgo11617!'
+            user: 'jbtoy.bot@gmail.com',
+            pass: 'JBBot!11'
         }
     })
 
+
+    let text = req.body.text + "\n\nSent From: " + req.body.email
     const message = {
         from: req.body.email,
         to: 'kyletagle727@gmail.com',
         subject: req.body.subject,
-        text: req.body.text
+        text: text
     }
 
     transporter.sendMail(message, (err,info)=>{
