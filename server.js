@@ -2,7 +2,6 @@ const express = require("express");
 const bodyparser = require("body-parser");
 const session = require("express-session");
 const cookieparser = require("cookie-parser");
-const mongoose = require("mongoose");
 
 const nodeMailer = require("nodemailer")
 
@@ -11,14 +10,17 @@ const {Order} = require("./model/order.js");
 const {Warehouse} = require("./model/warehouse.js");
 const {Sugg} = require("./model/suggestion.js");
 const {Driver} = require("./model/driver.js");
+const {Status} = require("./model/status.js")
 
 
 const app = express();
 
-/*mongoose.Promise = global.Promise;
-mongoose.connect("mongodb://localhost:27017/JBToyBalloons", {
-    useNewUrlParser : true
-})*/
+
+const mongoose = require('mongoose')
+const uri = "mongodb+srv://kyletagle727:1234567890@cluster0-diqll.mongodb.net/JBToyBalloons?retryWrites=true&w=majority";
+mongoose.connect(uri, { useUnifiedTopology: true, useNewUrlParser: true, useCreateIndex: true })
+  .then(() => console.log("MongoDB Connected..."))
+  .catch(err => console.log(err));
 
 const urlencoder = bodyparser.urlencoded({
     extended: false
@@ -104,6 +106,24 @@ app.post("/updateDriver", urlencoder, function(req,res){
 
 app.post("/deleteDriver", urlencoder, function(req,res){
     
+})
+
+app.post("/track", urlencoder, function(req, res){
+    let orderID = req.body.trackNumber
+
+    Status.findOne({orderID:orderID}, (err,doc)=>{
+        if(err) {
+            console.log(err)
+        }
+        if(doc) {
+            console.log(doc)
+            let status = doc.status
+            res.render("homepage.hbs", {orderID:orderID, status:status})
+        }
+        else {
+            res.render("homepage.hbs")
+        }
+    })
 })
 
 app.post("/contact", urlencoder, function(req, res) {

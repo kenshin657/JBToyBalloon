@@ -1,103 +1,151 @@
 <html>
-    <head>
-        <title>
-            JB Toy Balloons
-        </title>
-        <link rel="stylesheet" href="style.css">
-        <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
-        <script src="jquery.js"></script>
-        
-        <script>
-            $(document).ready(function(){
-                $("#logo").click(function(){
-                    $("#homeform").submit()
-                })
-                
-                $("#Home").click(function(){
-                    $("#homeform").submit()
-                })
-                
-                $("#Services").click(function(){
-                    $("#servform").submit()
-                })
-                
-                  $("#AbtUs").click(function(){
-                    $("#aboutform").submit()
-                })
-                
-                  $("#Contact").click(function(){
-                    $("#contactform").submit()
-                })
-                
-                $("#reg").click(function(){
-                    $("#regform").submit()
-                })
-                
-                $("#login").click(function(){
-                    $("#logform").submit()
-                })
+
+<head>
+    <title>
+        JB Toy Balloons
+    </title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+    <script src="jquery.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $("#logo").click(function () {
+                $("#homeform").submit()
             })
-        </script>
-    </head>
-    <body>
-        <header class="HeadFoot">
-            <ul id="left-nav">
-                <li id="logo"><img src="logo.png" id="logo"></li>          
-            </ul>
+
+            $("#Home").click(function () {
+                $("#homeform").submit()
+            })
+
+            $("#Services").click(function () {
+                $("#servform").submit()
+            })
+
+            $("#AbtUs").click(function () {
+                $("#aboutform").submit()
+            })
+
+            $("#Contact").click(function () {
+                $("#contactform").submit()
+            })
+
+            $("#reg").click(function () {
+                $("#regform").submit()
+            })
+
+            $("#login").click(function () {
+                $("#logform").submit()
+            })
+
+            if ($('#curStat').text() != '') {
+                let val = "OrderID: " + $("#curStat1").text() + "\nStatus: " + $("#curStat").text();
+                alert(val)
+            }
+        })
+
+        $(document).ready(() => {
             
-            <ul id="center-nav">
-                <li id="Home">Home</li>
-                <li id="Services">Services</li>
-                <li id="AbtUs">About Us</li>
-                <li id="Contact">Contact Us</li>
-            </ul>
-            
-        </header>
-        
-        <div class="contain-all">
-            <div class="main">
-                <div class="track_container">
-                    <div class="tracker">
-                        <br><br>
-                        <br><br>
-                        <img src="logo5.png" id="logo1">
-                        <h1>Welcome to JB Toy Balloons &amp; Party Needs!</h1>
-                        <h2>Order Tracking:</h2>
-                        <form method="post" action="track">
-                            <input type="Text" name="track" placeholder="Track No." id="t_text"><br><br>
-                            <input type="submit" value="Track Order" id="t_submit">
-                        </form>
-                    </div>
+        })
+    </script>
+
+    <style>
+        .invisible {
+            display: none;
+            visibility: hidden;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="curStat1" class="invisible">{{orderID}}</div>
+    <div id="curStat" class="invisible">{{status}}</div>
+    <header class="HeadFoot">
+        <ul id="left-nav">
+            <li id="logo"><img src="logo.png" id="logo"></li>
+        </ul>
+
+        <ul id="center-nav">
+            <li id="Home">Home</li>
+            <li id="Services">Services</li>
+            <li id="AbtUs">About Us</li>
+            <li id="Contact">Contact Us</li>
+        </ul>
+
+    </header>
+
+    <div class="contain-all">
+        <div class="main">
+            <div class="track_container">
+                <div class="tracker">
+                    <br><br>
+                    <br><br>
+                    <img src="logo5.png" id="logo1">
+                    <h1>Welcome to JB Toy Balloons &amp; Party Needs!</h1>
+                    <h2>Order Tracking:</h2>
+                    <form method="post" action="track">
+                        <input type="number" name="trackNumber" placeholder="Track No." id="t_text"><br><br>
+                        <input type="submit" value="Track Order" id="t_submit">
+                    </form>
                 </div>
             </div>
         </div>
-          
-        <form action="home" id="homeform" >
-            <input type="hidden">
-        </form>
-        
-        <form action="Services" id="servform" >
-            <input type="hidden">
-        </form>
-        
-        <form action="aboutUs" id="aboutform" >
-            <input type="hidden">
-        </form>
-        
-        <form action="contactUs" id="contactform" >
-            <input type="hidden">
-        </form>
-        
-        <form action="register" id="regform">
-                <input type="hidden">
-        </form>
-        
-        <form action="login" id="logform">
-                <input type="hidden">
-        </form>
-        
-        <footer id="copyright">
-            <p>&copy;2019 ALL RIGHTS RESERVED. JB TOY BALLOONS</p>
-        </footer>
-    </body>
+    </div>
+
+    <form action="home" id="homeform">
+        <input type="hidden">
+    </form>
+
+    <form action="Services" id="servform">
+        <input type="hidden">
+    </form>
+
+    <form action="aboutUs" id="aboutform">
+        <input type="hidden">
+    </form>
+
+    <form action="contactUs" id="contactform">
+        <input type="hidden">
+    </form>
+
+    <form action="register" id="regform">
+        <input type="hidden">
+    </form>
+
+    <form action="login" id="logform">
+        <input type="hidden">
+    </form>
+
+    <footer id="copyright">
+        <p>&copy;2019 ALL RIGHTS RESERVED. JB TOY BALLOONS</p>
+    </footer>
+</body>
+
 </html>
+
+<div class="modal fade" id="headings" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Credentials Required</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">This page requires an admin password to proceed.</div>
+            <div class="card-body">
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" name="pw" class="form-control form-control-lg rounded-0" id="pwd1"
+                        required="" autocomplete="new-password">
+                    <div class="invalid-feedback">Enter your password too!</div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                <button class="btn btn-primary" type="submit">Login</button>
+            </div>
+        </div>
+    </div>
+</div>
